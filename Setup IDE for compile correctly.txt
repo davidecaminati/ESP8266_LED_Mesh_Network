@@ -1,0 +1,7 @@
+Set Arduino IDE for Board NODE MCU 1.0 (ESP 12E Module)
+if you dont have this board , add 
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+to your configuration 
+
+NOTE 
+ArduinoJson library (by Benoit Blanchon) shuold be 5.13.3 VERSION !!!!
