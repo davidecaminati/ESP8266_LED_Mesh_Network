@@ -1,22 +1,26 @@
-//************************************************************
-// this is a simple example that uses the painlessMesh library
-//
-// 1. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
-// 2. prints anything it receives to Serial.print
-//
-//
-//************************************************************
+/* Libraries */
+// Arduinojson 6.11.4
+// NeoPixelBus by Makuna  2.5.0
+// Painless Mesh by Coopdis ...   1.4.2
+// TaskerScheduler by Anatoli  3.0.2
 
-// Arduinojson 5.13.3
+/*  Board */
+// tested with WEEMOS D1 R2 & mini in default configuration
+
+
+/* Pins */
+// Signal for Neopixel RX pin (second pin from top,  right side)
+// GND pin marked as G (second pin from bottom,  right side)
+
+/* NOTE */
+// GND must be in common Neopixel and MCU
 
 #include "painlessMesh.h"
-
 #include <NeoPixelBus.h>
 
 const uint16_t PixelCount = 3; // this example assumes 4 pixels, making it smaller will cause a failure
-//const uint8_t PixelPin = 2;  // make sure to set this to the correct pin, ignored for Esp8266
 
-uint16_t colorSaturation = 5;//128
+uint16_t colorSaturation = 5; // intensity
 
 #define   MESH_PREFIX     "whateverYouLike"
 #define   MESH_PASSWORD   "somethingSneaky"
@@ -26,10 +30,10 @@ NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(PixelCount);
 
 Scheduler userScheduler; // to control your personal task
 painlessMesh  mesh;
-//RgbColor red(colorSaturation, 0, 0);
-//RgbColor green(0, colorSaturation, 0);
-//RgbColor blue(0, 0, colorSaturation);
-//RgbColor white(colorSaturation);
+RgbColor red(colorSaturation, 0, 0);
+RgbColor green(0, colorSaturation, 0);
+RgbColor blue(0, 0, colorSaturation);
+RgbColor white(colorSaturation);
 RgbColor black(0);
 
 // User stub
@@ -58,8 +62,8 @@ void receivedCallback( uint32_t from, String &msg ) {
   }
   
   if (msg == "a"){
-    RgbColor red(colorSaturation, 0, 0);
-    RgbColor green(0, colorSaturation, 0);
+    //RgbColor red(colorSaturation, 0, 0);
+    //RgbColor green(0, colorSaturation, 0);
     strip.SetPixelColor(0, red);
     strip.SetPixelColor(1, black);
     strip.SetPixelColor(2, black);
@@ -67,8 +71,8 @@ void receivedCallback( uint32_t from, String &msg ) {
   }
 
   if (msg == "b"){
-    RgbColor red(colorSaturation, 0, 0);
-    RgbColor green(0, colorSaturation, 0);
+    //RgbColor red(colorSaturation, 0, 0);
+    //RgbColor green(0, colorSaturation, 0);
     strip.SetPixelColor(0, black);
     strip.SetPixelColor(1, green);
     strip.SetPixelColor(2, black);
